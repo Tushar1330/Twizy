@@ -12,7 +12,7 @@ const url ="https://twizy.adaptable.app/"
 // var foodItems= require('../index').foodData;
 // require("../index")
 //Creating a user and storing data to MongoDB Atlas, No Login Requiered
-router.post('url/createuser', [
+router.post(url+'/createuser', [
     body('email').isEmail(),
     body('password').isLength({ min: 5 }),
     body('name').isLength({ min: 3 })
@@ -53,7 +53,7 @@ router.post('url/createuser', [
 })
 
 // Authentication a User, No login Requiered
-router.post('url/login', [
+router.post(url+'/login', [
     body('email', "Enter a Valid Email").isEmail(),
     body('password', "Password cannot be blank").exists(),
 ], async (req, res) => {
@@ -91,7 +91,7 @@ router.post('url/login', [
 })
 
 // Get logged in User details, Login Required.
-router.post('url/getuser', fetch, async (req, res) => {
+router.post(url+'/getuser', fetch, async (req, res) => {
     try {
         const userId = req.user.id;
         const user = await User.findById(userId).select("-password") // -password will not pick password from db.
@@ -103,7 +103,7 @@ router.post('url/getuser', fetch, async (req, res) => {
     }
 })
 // Get logged in User details, Login Required.
-router.post('url/getlocation', async (req, res) => {
+router.post(url+'/getlocation', async (req, res) => {
     try {
         let lat = req.body.latlong.lat
         let long = req.body.latlong.long
@@ -131,7 +131,7 @@ router.post('url/getlocation', async (req, res) => {
 
     }
 })
-router.post('url/foodData', async (req, res) => {
+router.post(url+'/foodData', async (req, res) => {
     try {
         // console.log( JSON.stringify(global.foodData))
         // const userId = req.user.id;
@@ -144,7 +144,7 @@ router.post('url/foodData', async (req, res) => {
     }
 })
 
-router.post('url/orderData', async (req, res) => {
+router.post(url+'/orderData', async (req, res) => {
     let data = req.body.order_data
     await data.splice(0,0,{Order_date:req.body.order_date})
     console.log("1231242343242354",req.body.email)
@@ -182,7 +182,7 @@ router.post('url/orderData', async (req, res) => {
     }
 })
 
-router.post('url/myOrderData', async (req, res) => {
+router.post(url+'/myOrderData', async (req, res) => {
     try {
         console.log(req.body.email)
         let eId = await Order.findOne({ 'email': req.body.email })
