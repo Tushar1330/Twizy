@@ -1,7 +1,6 @@
 
 global.foodData = require('./db')(function call(err, data, CatData) {
   // console.log(data)
-  require('dotenv').config()
   if(err) console.log(err);
   global.foodData = data;
   global.foodCategory = CatData;

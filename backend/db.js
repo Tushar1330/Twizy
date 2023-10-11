@@ -1,7 +1,5 @@
 const mongoose = require('mongoose')
-// const mongoDbClient = require("mongodb").MongoClient
 require('dotenv').config()
-mongoose.set('strictQuery', false);
 module.exports = function (callback) {
     mongoose.connect(process.env.MONGO_URI, { useNewUrlParser: true }, async (err, result) => {
         // mongoDbClient.connect(mongoURI, { useNewUrlParser: true }, async(err, result) => {
@@ -15,6 +13,7 @@ module.exports = function (callback) {
                 categoryCollection.find({}).toArray(async function (err, Catdata) {
                     callback(err, data, Catdata);
                     // console.log(data);
+
                 })
             });
             // listCollections({name: 'food_items'}).toArray(function (err, database) {
