@@ -10,7 +10,7 @@ export default function Carousel() {
                     <div class=" carousel-caption  " style={{ zIndex: "9" }}>
                         <form className=" d-flex justify-content-center">  {/* justify-content-center, copy this <form> from navbar for search box */}
                             <input className="form-control me-2 w-75 bg-white text-dark" type="search" placeholder="Type in..." aria-label="Search" />
-                            <button className="btn text-white bg-success" type="submit">Search</button>
+                            <button className="btn text-white bg-danger" type="submit">Search</button>
                         </form>
                     </div>
                     <div className="carousel-item active" >
